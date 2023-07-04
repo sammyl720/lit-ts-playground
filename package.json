@@ -1,0 +1,19 @@
+{
+  "name": "lit-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "web-dev-server --node-resolve --open"
+  },
+  "dependencies": {
+    "lit-element": "^3.3.2"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.2.4",
+    "typescript": "^5.1.6"
+  }
+}
