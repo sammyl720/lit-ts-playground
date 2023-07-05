@@ -6,23 +6,21 @@
   "type": "module",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "build:watch": "webpack --config webpack.config.js --watch",
-    "serve:watch": "web-dev-server --node-resolve --open --watch",
+    "serve": "node dev-server.js",
     "generate-component": "ts-node --esm ./scaffold/index.ts create",
-    "serve": "concurrently \"yarn:build:watch\" \"yarn:serve:watch\"",
     "gc": "yarn generate-component"
   },
   "dependencies": {
     "lit-element": "^3.3.2"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.2.4",
     "commander": "^11.0.0",
-    "concurrently": "^8.2.0",
+    "html-webpack-plugin": "^5.5.3",
     "ts-loader": "^9.4.4",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }

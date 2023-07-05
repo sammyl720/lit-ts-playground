@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -13,13 +14,19 @@ export default {
             exclude: /node_modules/,
         },
     ],
-},
-resolve: {
-    extensions: ['.ts', '.js'],
-},
+  },
+  mode: process.env.NODE_ENV ?? 'development',
+  resolve: {
+      extensions: ['.ts', '.js'],
+  },
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  // ...rest of your configuration
+  plugins: [new HtmlWebpackPlugin({
+    template: path.resolve(__dirname, 'index.ejs'),
+    templateParameters: {
+      pageTitle: 'Lit WebComponents Playground'
+    }
+  })]
 };
