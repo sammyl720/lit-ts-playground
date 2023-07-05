@@ -3,7 +3,7 @@ import path from 'path';
 import { generateComponentFileContent } from './utils.js';
 
 export function createComponent(componentname: string) {
-  const componentPath = path.join('src', "scripts", 'components', componentname);
+  const componentPath = path.join('src', 'components', componentname);
   const directoryDir = path.join(process.cwd(), componentPath);
   const filePath = path.join(directoryDir, 'index.ts');
 
@@ -20,7 +20,7 @@ export function createComponent(componentname: string) {
 }
 
 export function addComponentToExports(componentname: string) {
-  const relativePath = path.join('src', 'scripts', 'components', 'index.ts');
+  const relativePath = path.join('src', 'components', 'index.ts');
   const filePath = path.join(process.cwd(), relativePath);
 
   const exportStatement = `\nexport * from './${componentname}'`;
