@@ -4,8 +4,10 @@ export default css`
 button {
   outline: none;
   border: none;
-  background: #232323;
+  background: #33c3f4;
   color: #f1f1f1;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:active {

@@ -1,6 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -13,6 +14,14 @@ export default {
             use: 'ts-loader',
             exclude: /node_modules/,
         },
+        {
+          test: /\.scss$/,
+          use: [
+            MiniCSSExtractPlugin.loader,
+            'css-loader', // Translates CSS into CommonJS
+            'sass-loader' // Compiles Sass to CSS
+          ],
+        },
     ],
   },
   mode: process.env.NODE_ENV ?? 'development',
@@ -23,10 +32,13 @@ export default {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, 'index.ejs'),
-    templateParameters: {
-      pageTitle: 'Lit WebComponents Playground'
-    }
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'index.ejs'),
+      templateParameters: {
+        pageTitle: 'Lit WebComponents Playground'
+      }
+    }),
+    new MiniCSSExtractPlugin()
+  ]
 };
